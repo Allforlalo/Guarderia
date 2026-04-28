@@ -21,8 +21,8 @@
         <tbody>
             @foreach($menus as $menu)
             <tr>
-                <td>{{ $menu->id_plato }}</td>
-                <td>{{ $menu->id_ingrediente }}</td>
+                <td>{{ $menu->nombre_plato }}</td>
+                <td>{{ $menu->nombre_ingrediente }}</td>
                 <td>
                     <a href="{{ route('menus.edit', $menu->id_menu) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('menus.destroy', $menu->id_menu) }}" method="POST" style="display:inline">

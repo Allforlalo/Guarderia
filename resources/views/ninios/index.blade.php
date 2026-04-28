@@ -16,6 +16,8 @@
                 <th>Matrícula</th>
                 <th>Fecha Ingreso</th>
                 <th>Persona</th>
+                <th>persona apellido paterno</th>
+                <th>persona apellido materno</th>
                 <th>Centro</th>
                 <th>Acciones</th>
             </tr>
@@ -25,8 +27,10 @@
             <tr>
                 <td>{{ $ninio->matricula }}</td>
                 <td>{{ $ninio->fecha_i }}</td>
-                <td>{{ $ninio->id_persona }}</td>
-                <td>{{ $ninio->id_centro }}</td>
+                <td>{{ $ninio->nombre_child }}</td>
+                <td>{{ $ninio->apellido_paterno_child }}</td>
+                <td>{{ $ninio->apellido_materno_child }}</td>
+                <td>{{ $ninio->nombre_centro }}</td>
                 <td>
                     <a href="{{ route('ninios.edit', $ninio->id_ninio) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('ninios.destroy', $ninio->id_ninio) }}" method="POST" style="display:inline">

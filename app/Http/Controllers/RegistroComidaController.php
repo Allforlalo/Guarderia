@@ -11,8 +11,12 @@ class RegistroComidaController extends Controller
 {
     public function index()
     {
-        $registroComidas = RegistroComida::all();
-        return view('registro_comidas.index', compact('registroComidas'));
+    $registroComidas = RegistroComida::join('ninios', 'registro_comidas.id_ninio', 'ninios.id_ninio')
+    ->join('personas', 'ninios.id_persona', 'personas.id_persona')
+    ->join('platos', 'registro_comidas.id_plato', 'platos.id_plato')
+    ->select('registro_comidas.id_registrocomida', 'registro_comidas.cantidad', 'registro_comidas.fecha', 'personas.nom AS nombre_ninio', 'platos.nombre AS nombre_plato')
+    ->get();
+    return view('registro_comidas.index', compact('registroComidas'));
     }
     public function create()
     {

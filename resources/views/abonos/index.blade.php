@@ -13,18 +13,24 @@
     <table class="table table-bordered table-striped table-dark">
         <thead>
             <tr>
+                <th>No</th>
                 <th>Cantidad</th>
                 <th>Fecha</th>
                 <th>Cuenta</th>
+                <th>Nombre Niño</th>
+                <th>Nombre Familiar</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach($abonos as $abono)
             <tr>
+                <td>{{ $loop->index + 1 }}</td>
                 <td>{{ $abono->cantidad }}</td>
                 <td>{{ $abono->fecha }}</td>
-                <td>{{ $abono->id_regcuenta }}</td>
+                <td>{{ $abono->cuenta }}</td>
+                <td>{{ $abono->nombre_ninio }}</td>
+                <td>{{ $abono->nombre_familiar }}</td>
                 <td>
                     <a href="{{ route('abonos.edit', $abono->id_abono) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('abonos.destroy', $abono->id_abono) }}" method="POST" style="display:inline">

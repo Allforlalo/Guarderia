@@ -11,8 +11,11 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $menus = Menu::all();
-        return view('menus.index', compact('menus'));
+    $menus = Menu::join('platos', 'menus.id_plato', 'platos.id_plato')
+    ->join('ingredientes', 'menus.id_ingrediente', 'ingredientes.id_ingrediente')
+    ->select('menus.id_menu', 'platos.nombre AS nombre_plato', 'ingredientes.nombre AS nombre_ingrediente')
+    ->get();
+    return view('menus.index', compact('menus'));
     }
     public function create()
     {

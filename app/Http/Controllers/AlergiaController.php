@@ -11,8 +11,12 @@ class AlergiaController extends Controller
 {
     public function index()
     {
-        $alergias = Alergia::all();
-        return view('alergias.index', compact('alergias'));
+    $alergias = Alergia::join('ninios', 'alergias.id_ninio', 'ninios.id_ninio')
+    ->join('personas', 'ninios.id_persona', 'personas.id_persona')
+    ->join('ingredientes', 'alergias.id_ingrediente', 'ingredientes.id_ingrediente')
+    ->select('alergias.id_alergia', 'personas.nom AS nombre_ninio', 'ingredientes.nombre AS nombre_ingrediente')
+    ->get();
+    return view('alergias.index', compact('alergias'));
     }
     public function create()
     {

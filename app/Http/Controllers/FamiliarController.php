@@ -12,8 +12,13 @@ class FamiliarController extends Controller
 {
     public function index()
     {
-        $familiares = Familiar::all();
-        return view('familiares.index', compact('familiares'));
+    $familiares = Familiar::join('personas', 'familiares.id_persona', 'personas.id_persona')
+    ->join('parentezcos', 'familiares.id_parentezco', 'parentezcos.id_parentezco')
+    ->join('ninios', 'familiares.id_ninio', 'ninios.id_ninio')
+    ->join('personas as personas_ninio', 'ninios.id_persona', 'personas_ninio.id_persona')
+    ->select('familiares.id_fam', 'familiares.DNI', 'familiares.dir', 'personas.nom AS nombre_persona', 'personas.ap AS apellido_paterno_persona', 'personas.am AS apellido_materno_persona', 'parentezcos.nombre AS nombre_parentezco', 'personas_ninio.nom AS nombre_ninio')
+    ->get();
+    return view('familiares.index', compact('familiares'));
     }
     public function create()
     {

@@ -15,7 +15,9 @@
             <tr>
                 <th>DNI</th>
                 <th>Dirección</th>
-                <th>Persona</th>
+                <th>Persona nombre</th>
+                <th>Persona apellido</th>
+                <th>Persona apellido</th>
                 <th>Parentezco</th>
                 <th>Niño</th>
                 <th>Acciones</th>
@@ -26,9 +28,11 @@
             <tr>
                 <td>{{ $familiar->DNI }}</td>
                 <td>{{ $familiar->dir }}</td>
-                <td>{{ $familiar->id_persona }}</td>
-                <td>{{ $familiar->id_parentezco }}</td>
-                <td>{{ $familiar->id_ninio }}</td>
+                <td>{{ $familiar->nombre_persona }}</td>
+                <td>{{ $familiar->apellido_paterno_persona }}</td>
+                <td>{{ $familiar->apellido_materno_persona }}</td>
+                <td>{{ $familiar->nombre_parentezco }}</td>
+                <td>{{ $familiar->nombre_ninio }}</td>
                 <td>
                     <a href="{{ route('familiares.edit', $familiar->id_fam) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('familiares.destroy', $familiar->id_fam) }}" method="POST" style="display:inline">

@@ -10,7 +10,10 @@ class RegistroCuentaController extends Controller
 {
     public function index()
     {
-        $registroCuentas = RegistroCuenta::all();
+        $registroCuentas = RegistroCuenta::join('familiares', 'registro_cuentas.id_fam', 'familiares.id_fam')
+        ->join('personas', 'familiares.id_persona', 'personas.id_persona')
+        ->select('registro_cuentas.id_regcuenta', 'registro_cuentas.cuenta', 'personas.nom AS nombre_familiar')
+        ->get();
         return view('registro_cuentas.index', compact('registroCuentas'));
     }
     public function create()

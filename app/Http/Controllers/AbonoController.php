@@ -10,7 +10,13 @@ class AbonoController extends Controller
 {
     public function index()
     {
-        $abonos = Abono::all();
+    $abonos = Abono::join('registro_cuentas', 'abonos.id_regcuenta', 'registro_cuentas.id_regcuenta')
+        ->join('familiares', 'registro_cuentas.id_fam', 'familiares.id_fam')
+        ->join('ninios', 'familiares.id_ninio', 'ninios.id_ninio')
+        ->join('personas', 'ninios.id_persona', 'personas.id_persona')
+        ->join('personas as personas_familiar', 'familiares.id_persona', 'personas_familiar.id_persona')
+        ->select('abonos.id_abono', 'abonos.cantidad', 'abonos.fecha', 'personas.nom AS nombre_ninio', 'personas_familiar.nom AS nombre_familiar', 'registro_cuentas.cuenta')
+        ->get();
         return view('abonos.index', compact('abonos'));
     }
     public function create()

@@ -21,8 +21,8 @@
         <tbody>
             @foreach($alergias as $alergia)
             <tr>
-                <td>{{ $alergia->id_ninio }}</td>
-                <td>{{ $alergia->id_ingrediente }}</td>
+                <td>{{ $alergia->nombre_ninio }}</td>
+                <td>{{ $alergia->nombre_ingrediente }}</td>
                 <td>
                     <a href="{{ route('alergias.edit', $alergia->id_alergia) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('alergias.destroy', $alergia->id_alergia) }}" method="POST" style="display:inline">

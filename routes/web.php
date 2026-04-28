@@ -15,9 +15,8 @@ use App\Http\Controllers\RegistroCuentaController;
 use App\Http\Controllers\BajaNinioController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
 
 Route::resource('centros', CentroController::class);
 Route::resource('personas', PersonaController::class);
@@ -42,7 +41,7 @@ use App\Http\Controllers\PedidoBebidaController;
 use App\Http\Controllers\PedidoPlatilloController;
 use App\Http\Controllers\TarjetaPagoController;
 use App\Http\Controllers\VentaController;
-use App\Http\Controllers\PonteglampingController;
+
 
 Route::resource('cargos', CargoController::class);
 Route::resource('clientes', ClienteController::class);
@@ -53,15 +52,4 @@ Route::resource('pedidos_bebidas', PedidoBebidaController::class);
 Route::resource('pedidos_platillos', PedidoPlatilloController::class);
 Route::resource('tarjetas_pago', TarjetaPagoController::class);
 Route::resource('ventas', VentaController::class);
-Route::resource('ponteglamping', PonteglampingController::class);
 
-Route::get('/glamping', function () {
-    $platillos = \App\Models\PedidoPlatillo::all();
-    return view('glamping.inicio', compact('platillos'));
-});
-Route::get('/glamping/menu', [PedidoPlatilloController::class, 'menuPublico'])->name('glamping.menu');
-Route::get('/glamping/instalaciones', [InstalacionController::class, 'instalacionesPublicas'])->name('glamping.instalaciones');
-Route::get('/glamping/pago', function () {
-    $tarjetas = \App\Models\TarjetaPago::all();
-    return view('glamping.pago', compact('tarjetas'));
-})->name('glamping.pago');

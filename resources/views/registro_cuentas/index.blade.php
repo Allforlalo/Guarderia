@@ -22,7 +22,7 @@
             @foreach($registroCuentas as $registroCuenta)
             <tr>
                 <td>{{ $registroCuenta->cuenta }}</td>
-                <td>{{ $registroCuenta->id_fam }}</td>
+                <td>{{ $registroCuenta->nombre_familiar }}</td>
                 <td>
                     <a href="{{ route('registro_cuentas.edit', $registroCuenta->id_regcuenta) }}" class="btn btn-warning btn-sm">Editar</a>
                     <form action="{{ route('registro_cuentas.destroy', $registroCuenta->id_regcuenta) }}" method="POST" style="display:inline">

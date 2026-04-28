@@ -23,8 +23,8 @@
         <tbody>
             @foreach($registroComidas as $registroComida)
             <tr>
-                <td>{{ $registroComida->id_ninio }}</td>
-                <td>{{ $registroComida->id_plato }}</td>
+                <td>{{ $registroComida->nombre_ninio }}</td>
+                <td>{{ $registroComida->nombre_plato }}</td>
                 <td>{{ $registroComida->cantidad }}</td>
                 <td>{{ $registroComida->fecha }}</td>
                 <td>
